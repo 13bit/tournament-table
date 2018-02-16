@@ -1,0 +1,24 @@
+<h3>{{user.id ? 'Редактирование' : 'Создание'}} пользователя</h3>
+
+<form (ngSubmit)="save()">
+  <div class="form-group">
+    <label for="name">Имя</label>
+    <input type="text"
+           class="form-control"
+           id="name"
+           [(ngModel)]="user.name"
+           name="name"
+           placeholder="Введите имя">
+  </div>
+
+  <div class="form-group">
+    <label for="bonus">Бонус</label>
+    <input type="text"
+           class="form-control"
+           id="bonus"
+           name="bonus"
+           [(ngModel)]="user.bonus"
+           placeholder="Бонус">
+  </div>
+  <button class="btn btn-primary">Сохранить</button>
+</form>
