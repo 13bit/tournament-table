@@ -28,6 +28,7 @@ export class UserService {
       users.map((item: User) => {
         if (item.id === user.id) {
           item.name = user.name;
+          item.bonus = user.bonus;
           item.bonusHistory = user.bonusHistory;
         }
       });

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/User';
 import {UserService} from '../../UserService';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit-user',
@@ -14,7 +14,7 @@ export class EditUserComponent implements OnInit {
   bonus: number = null;
   bonusSum: number;
 
-  constructor(private userService: UserService, private route: ActivatedRoute) { }
+  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.user = this.route.snapshot.data['user']
@@ -28,6 +28,7 @@ export class EditUserComponent implements OnInit {
      this.userService.save(this.user)
       .subscribe((user) => {
         console.log('user  >>', user);
+        this.router.navigateByUrl('/admin/users');
       });
   }
 
@@ -43,6 +44,7 @@ export class EditUserComponent implements OnInit {
       this.bonus = null;
       this.showAddBonusForm = false;
       this.bonusSum = this.calculateBonus();
+      this.user.bonus = this.bonusSum;
     }
   }
 
@@ -58,6 +60,7 @@ export class EditUserComponent implements OnInit {
   removeHistoryItem(index): void {
     this.user.bonusHistory.splice(index, 1);
     this.bonusSum = this.calculateBonus();
+    this.user.bonus = this.bonusSum;
   }
 
 }

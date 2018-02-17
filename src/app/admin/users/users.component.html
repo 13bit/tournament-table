@@ -1,3 +1,35 @@
-<p>
-  users works!
-</p>
+<div class="row" style="padding-bottom: 0.5em; margin-top: 1em; border-bottom: 1px solid; margin-bottom: 2em;">
+  <div class="col-md-10">
+    <h4>Список участников</h4>
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-sm btn-primary" routerLink="/admin/users/new">Добавить</button>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Имя</th>
+    <th scope="col">Бонус</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users; let index = index;">
+    <th scope="row">{{index+1}}</th>
+    <td>{{user.name}}</td>
+    <td>{{user.bonus}}</td>
+    <td>
+      <div class="col-md-12">
+        <div class="float-md-right">
+          <button class="btn btn-sm btn-success " [routerLink]="['/admin/users', user.id]">Изменить</button>
+          <button class="btn btn-sm btn-secondary" (click)="removeUser(user)">Удалить</button>
+        </div>
+
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
