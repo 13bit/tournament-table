@@ -20,7 +20,8 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "css/superhero-bootstrap.min.css"
+        "css/superhero-bootstrap.min.css",
+        "./../node_modules/ngx-bootstrap/datepicker/bs-datepicker.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

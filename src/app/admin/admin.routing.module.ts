@@ -4,6 +4,7 @@ import {MainComponent} from './main/main.component';
 import {UsersComponent} from './users/users.component';
 import {EditUserComponent} from './edit-user/edit-user.component';
 import {UserResolve} from './user.resolver';
+import {BonusSettingsComponent} from './bonus-settings/bonus-settings.component';
 
 export const adminRoutes: Routes = [
   {
@@ -26,6 +27,10 @@ export const adminRoutes: Routes = [
         path: 'users/new',
         component: EditUserComponent
       },
+      {
+        path: 'bonus',
+        component: BonusSettingsComponent
+      }
     ],
   },
 ];
