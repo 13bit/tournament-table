@@ -7,6 +7,21 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="input-group mb-3" >
+    <input type="text"
+           class="form-control"
+           id="search"
+           name="search"
+           [(ngModel)]="search"
+           (ngModelChange)="onSearch($event)"
+           placeholder="Введите имя для поиска ...">
+    <div class="input-group-append">
+      <button class="btn btn-success" type="button" disabled style="opacity: 1; cursor: default">Поиск</button>
+    </div>
+  </div>
+</div>
+
 <table class="table table-hover">
   <thead>
   <tr>

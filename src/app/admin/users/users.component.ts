@@ -9,6 +9,8 @@ import {User} from '../../models/User';
 })
 export class UsersComponent implements OnInit {
   users: User[];
+  _users: User[];
+  search: string;
 
   constructor(private userService: UserService) {
   }
@@ -17,9 +19,16 @@ export class UsersComponent implements OnInit {
     this.getUsers();
   }
 
+  onSearch(input) {
+    this.users = this._users.filter(({name}) => name.toLowerCase().match(input.toLowerCase()));
+  }
+
   getUsers(): void {
     this.userService.get()
-      .subscribe((users) => this.users = users);
+      .subscribe((users) => {
+        this._users = users;
+        this.users = this._users;
+      });
   }
 
   removeUser(user: User): void {
