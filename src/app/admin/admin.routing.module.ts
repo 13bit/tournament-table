@@ -9,11 +9,8 @@ export const adminRoutes: Routes = [
   {
     path: 'admin',
     canActivate: [],
+    component: MainComponent,
     children: [
-      {
-        path: 'main',
-        component: MainComponent
-      },
       {
         path: 'users',
         component: UsersComponent
