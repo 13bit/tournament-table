@@ -6,6 +6,7 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class UserService {
+  collection = 'users';
 
   constructor(private localStorageService: LocalStorageService) {
   }
@@ -63,6 +64,15 @@ export class UserService {
   remove(user: User): Observable<any> {
     const users = this.localStorageService.get('users') as User[] || [];
     this.localStorageService.set('users', users.filter((item) => item.id !== user.id));
+
+    return Observable.create((observer) => {
+      observer.next();
+      observer.complete();
+    });
+  }
+
+  removeAll(): Observable<any> {
+    this.localStorageService.remove(this.collection);
 
     return Observable.create((observer) => {
       observer.next();

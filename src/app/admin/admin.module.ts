@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import {BonusSettingsComponent} from './bonus-settings/bonus-settings.component';
 import {NgDatepickerModule} from 'ng2-datepicker';
 import {BsDatepickerModule, TimepickerModule} from 'ngx-bootstrap';
+import {SettingsComponent} from './settings/settings.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import {BsDatepickerModule, TimepickerModule} from 'ngx-bootstrap';
     BsDatepickerModule.forRoot()
 
   ],
-  declarations: [MainComponent, EditUserComponent, UsersComponent, BonusSettingsComponent],
+  declarations: [MainComponent, EditUserComponent, UsersComponent, BonusSettingsComponent, SettingsComponent],
   providers: [
     UserResolve,
   ]

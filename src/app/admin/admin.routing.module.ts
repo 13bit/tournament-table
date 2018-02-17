@@ -5,6 +5,7 @@ import {UsersComponent} from './users/users.component';
 import {EditUserComponent} from './edit-user/edit-user.component';
 import {UserResolve} from './user.resolver';
 import {BonusSettingsComponent} from './bonus-settings/bonus-settings.component';
+import {SettingsComponent} from './settings/settings.component';
 
 export const adminRoutes: Routes = [
   {
@@ -30,6 +31,10 @@ export const adminRoutes: Routes = [
       {
         path: 'bonus',
         component: BonusSettingsComponent
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent
       }
     ],
   },
