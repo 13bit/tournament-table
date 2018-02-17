@@ -53,6 +53,29 @@
     </div>
   </div>
 
+  <div class="col-md-6" style="padding-left: 0;" *ngIf="user.bonusHistory.length">
+    <label for="">История бонусов</label>
+
+    <div class="scrollit" style="margin-bottom: 1em">
+      <ul class="list-group">
+        <li *ngFor="let bonus of user.bonusHistory; let index = index;"
+            class="list-group-item"
+            style="border: 1px solid #df691ab5; padding-bottom: 5px; padding-top: 5px;">
+
+          <div class="row">
+            <div class="col-md-8">
+              {{bonus}}
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-sm btn-success" (click)="removeHistoryItem(index)">Удалить</button>
+            </div>
+
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
   <button class="btn btn-primary">Сохранить</button>
   <button role="button"
           class="btn btn-secondary"

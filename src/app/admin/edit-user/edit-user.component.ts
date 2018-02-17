@@ -55,4 +55,9 @@ export class EditUserComponent implements OnInit {
     return this.user.bonusHistory.reduce((acc, bonus) => acc + bonus, 0);
   }
 
+  removeHistoryItem(index): void {
+    this.user.bonusHistory.splice(index, 1);
+    this.bonusSum = this.calculateBonus();
+  }
+
 }
