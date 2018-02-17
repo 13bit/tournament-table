@@ -1,86 +1,92 @@
-<div class="row" style="padding-bottom: 0.5em; margin-top: 1em; border-bottom: 1px solid; margin-bottom: 2em;">
-  <div class="col-md-10">
-    <h4>{{user.id ? 'Редактирование' : 'Создание'}} участника</h4>
-  </div>
-  <div class="col-md-2">
-    <button class="btn btn-secondary" routerLink="/admin/users">Назад</button>
+<div class="row">
+  <div class="col-md-10 offset-md-1">
+    <div class="row" style="padding-bottom: 0.5em; margin-top: 1em; border-bottom: 1px solid; margin-bottom: 2em;">
+      <div class="col-md-10">
+        <h4>{{user.id ? 'Редактирование' : 'Создание'}} участника</h4>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-secondary float-right" routerLink="/admin/users">Назад</button>
+      </div>
+    </div>
+
+    <form (ngSubmit)="save()">
+      <div class="form-group">
+        <label for="name">Имя</label>
+        <input type="text"
+               class="form-control"
+               id="name"
+               [(ngModel)]="user.name"
+               name="name"
+               placeholder="Введите имя">
+      </div>
+
+      <div class="input-group mb-3">
+        <label for="bonusSum" style="width: 100%;">Текущий бонус</label>
+
+        <input type="text"
+               class="form-control"
+               id="bonusSum"
+               name="bonusSum"
+               value="{{bonusSum}}"
+               disabled
+               style="cursor: default; background-color: #ffffff;"
+               placeholder="Бонус">
+        <div class="input-group-append">
+          <button class="btn btn-primary"
+                  type="button"
+                  (click)="showAddBonusInput()">
+            Добавить бонус
+          </button>
+        </div>
+      </div>
+
+      <div class="input-group mb-3" *ngIf="showAddBonusForm">
+        <label for="bonus" style="width: 100%;">Добавить бонус</label>
+
+        <input type="text"
+               class="form-control"
+               id="bonus"
+               name="bonus"
+               [(ngModel)]="bonus"
+               placeholder="Введите бонус">
+        <div class="input-group-append">
+          <button class="btn btn-success" type="button" (click)="addBonus()">Добавить</button>
+          <button class="btn btn-secondary" type="button" (click)="cancelAddBonus()">Отменить</button>
+        </div>
+      </div>
+
+      <div class="col-md-6" style="padding-left: 0;" *ngIf="user.bonusHistory.length">
+        <label for="">История бонусов</label>
+
+        <div class="scrollit" style="margin-bottom: 1em">
+          <ul class="list-group">
+            <li *ngFor="let bonus of user.bonusHistory; let index = index;"
+                class="list-group-item"
+                style="border: 1px solid #df691ab5; padding-bottom: 5px; padding-top: 5px;">
+
+              <div class="row">
+                <div class="col-md-8">
+                  {{bonus}}
+                </div>
+                <div class="col-md-4">
+                  <button class="btn btn-sm btn-success" (click)="removeHistoryItem(index)">Удалить</button>
+                </div>
+
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <button class="btn btn-primary">Сохранить</button>
+      <button role="button"
+              class="btn btn-secondary"
+              routerLink="/admin/users">
+        Отмена
+      </button>
+
+    </form>
   </div>
 </div>
 
-<form (ngSubmit)="save()">
-  <div class="form-group">
-    <label for="name">Имя</label>
-    <input type="text"
-           class="form-control"
-           id="name"
-           [(ngModel)]="user.name"
-           name="name"
-           placeholder="Введите имя">
-  </div>
 
-  <div class="input-group mb-3">
-    <label for="bonusSum" style="width: 100%;">Текущий бонус</label>
-
-    <input type="text"
-           class="form-control"
-           id="bonusSum"
-           name="bonusSum"
-           value="{{bonusSum}}"
-           disabled
-           style="cursor: default; background-color: #ffffff;"
-           placeholder="Бонус">
-    <div class="input-group-append">
-      <button class="btn btn-primary"
-              type="button"
-              (click)="showAddBonusInput()">
-        Добавить бонус
-      </button>
-    </div>
-  </div>
-
-  <div class="input-group mb-3" *ngIf="showAddBonusForm">
-    <label for="bonus" style="width: 100%;">Добавить бонус</label>
-
-    <input type="text"
-           class="form-control"
-           id="bonus"
-           name="bonus"
-           [(ngModel)]="bonus"
-           placeholder="Введите бонус">
-    <div class="input-group-append">
-      <button class="btn btn-success" type="button" (click)="addBonus()">Добавить</button>
-      <button class="btn btn-secondary" type="button" (click)="cancelAddBonus()">Отменить</button>
-    </div>
-  </div>
-
-  <div class="col-md-6" style="padding-left: 0;" *ngIf="user.bonusHistory.length">
-    <label for="">История бонусов</label>
-
-    <div class="scrollit" style="margin-bottom: 1em">
-      <ul class="list-group">
-        <li *ngFor="let bonus of user.bonusHistory; let index = index;"
-            class="list-group-item"
-            style="border: 1px solid #df691ab5; padding-bottom: 5px; padding-top: 5px;">
-
-          <div class="row">
-            <div class="col-md-8">
-              {{bonus}}
-            </div>
-            <div class="col-md-4">
-              <button class="btn btn-sm btn-success" (click)="removeHistoryItem(index)">Удалить</button>
-            </div>
-
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <button class="btn btn-primary">Сохранить</button>
-  <button role="button"
-          class="btn btn-secondary"
-          routerLink="/admin/users">
-    Отмена
-  </button>
-
-</form>
