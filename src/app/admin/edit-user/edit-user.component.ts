@@ -9,9 +9,10 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
-  userId: string;
   user: User|any;
-  private sub: any;
+  showAddBonusForm = false;
+  bonus: number = null;
+  bonusSum: number;
 
   constructor(private userService: UserService, private route: ActivatedRoute) { }
 
@@ -19,6 +20,8 @@ export class EditUserComponent implements OnInit {
     this.user = this.route.snapshot.data['user']
       ? this.route.snapshot.data['user']
       : new User();
+
+    this.bonusSum = this.calculateBonus() || 0;
   }
 
   save(): void {
@@ -26,6 +29,30 @@ export class EditUserComponent implements OnInit {
       .subscribe((user) => {
         console.log('user  >>', user);
       });
+  }
+
+  showAddBonusInput(): void {
+    this.showAddBonusForm = true;
+  }
+
+  addBonus(): void {
+    this.bonus = this.bonus * 1;
+
+    if (this.bonus > 0 && Number.isInteger(this.bonus)) {
+      this.user.bonusHistory.push(this.bonus);
+      this.bonus = null;
+      this.showAddBonusForm = false;
+      this.bonusSum = this.calculateBonus();
+    }
+  }
+
+  cancelAddBonus(): void {
+    this.bonus = null;
+    this.showAddBonusForm = false;
+  }
+
+  calculateBonus(): number {
+    return this.user.bonusHistory.reduce((acc, bonus) => acc + bonus, 0);
   }
 
 }

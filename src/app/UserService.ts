@@ -13,9 +13,9 @@ export class UserService {
   save(user: User): Observable<User> {
     const create = (user: User) => {
       user.id = UUID.UUID();
-      const tasks = this.localStorageService.get('users') as User[] || [];
-      tasks.push(user);
-      this.localStorageService.set('users', tasks);
+      const users = this.localStorageService.get('users') as User[] || [];
+      users.push(user);
+      this.localStorageService.set('users', users);
 
       return Observable.create((observer) => {
         observer.next(user);
@@ -24,14 +24,15 @@ export class UserService {
     };
 
     const update = (user: User) => {
-      const tasks = this.localStorageService.get('users') as User[] || [];
-      tasks.map((item: User) => {
+      const users = this.localStorageService.get('users') as User[] || [];
+      users.map((item: User) => {
         if (item.id === user.id) {
           item.name = user.name;
+          item.bonusHistory = user.bonusHistory;
         }
       });
 
-      this.localStorageService.set('users', tasks);
+      this.localStorageService.set('users', users);
 
       return Observable.create((observer) => {
         observer.next(user);
