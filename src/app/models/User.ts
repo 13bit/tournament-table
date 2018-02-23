@@ -1,6 +1,6 @@
 export class User {
   id: any;
   name: string;
-  bonus: number;
+  bonus: number = 0;
   bonusHistory: Array<number> = [];
 }

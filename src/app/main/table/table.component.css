@@ -1,4 +1,25 @@
 thead:first-child {
-  color: #4c3535;
-  background: #f6a821;
+  /*color: #4c3535;*/
+  background: #374858;
+}
+
+tbody tr:nth-child(1) {
+  /*background-color: #eab12b;*/
+  background-color: #eab12be8;
+  /*opacity: 0.9;*/
+}
+
+tbody tr:nth-child(2) {
+  /*background-color: #bbb7b7;*/
+  background-color:#eab12bb8;
+  /*opacity: 0.9;*/
+}
+
+tbody tr:nth-child(3) {
+  background-color: #eab12b66;
+  /*opacity: 0.9;*/
+}
+
+.user-name:first-letter {
+  text-transform: uppercase;
 }
