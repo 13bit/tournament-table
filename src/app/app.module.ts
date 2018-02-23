@@ -9,6 +9,7 @@ import {LocalStorageModule} from 'angular-2-local-storage';
 import {UserService} from './UserService';
 import {TimepickerModule} from 'ngx-bootstrap';
 import {BonusSettingsService} from './BonusSettingsService';
+import {MainModule} from './main/main.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {BonusSettingsService} from './BonusSettingsService';
     BrowserModule,
     AppRoutingModule,
     AdminModule,
+    MainModule,
     RouterModule.forRoot([]),
     LocalStorageModule.withConfig({
       prefix: '',

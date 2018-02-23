@@ -1,6 +1,7 @@
 import {Routes, RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {adminRoutes} from './admin/admin.routing.module';
+import {mainRoutes} from './main/main.routing.module';
 
 export const appRoutes: Routes = [
   // {
@@ -12,13 +13,14 @@ export const appRoutes: Routes = [
     path: '',
     canActivate: [],
     children: [
-      ...adminRoutes
+      ...adminRoutes,
+      ...mainRoutes
     ],
   },
-  // {
-  //   path: '**',
-  //   redirectTo: 'app'
-  // }
+  {
+    path: '**',
+    redirectTo: '/'
+  }
 ];
 
 @NgModule({
