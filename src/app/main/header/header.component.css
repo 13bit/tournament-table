@@ -128,7 +128,7 @@ div#text {
 .test {
   color:#f1af17;
   font-size:2em;
-  letter-spacing:10px;
+  letter-spacing:3px;
   animation: text-flicker 3s linear infinite;
 }
 

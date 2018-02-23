@@ -1,15 +1,16 @@
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 glass">
   <div class="navbar col-sm-3 col-md-3">
-    <img src="assets/joker.png" width="150" height="150" style="margin: 0.5em">
+    <img src="assets/joker.png" width="200" height="200" style="margin: 0.5em 0.5em 0.5em 3em;">
   </div>
   <div class="col-sm-6 col-md-3">
     <div class="flux">BONUS</div>
-    <div class="neon">20000</div>
+    <div class="neon">{{settings.bonus}}</div>
   </div>
 
   <div class="col-sm-3 col-md-3">
-    <div id="text">
-      <div class="test clock">2 дня 12:45:25</div>
+    <div id="text" style="margin-right: 3em" *ngIf="timerIsReady">
+      <div class="test clock">{{timeLeftDays}}</div>
+      <div class="test clock">{{timeLeftHours}}</div>
     </div>
   </div>
 </nav>
