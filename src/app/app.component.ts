@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {remote, ipcRenderer} from 'electron';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor() {
+    const menu = remote.Menu.buildFromTemplate([{
+      label: 'File',
+      submenu: [{
+        label: 'Открыть таблицу',
+        click: () => {
+          ipcRenderer.send('openTournamentTable');
+        }
+      }]
+    }]);
+    remote.Menu.setApplicationMenu(menu);
+  }
 }

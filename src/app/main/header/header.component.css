@@ -3,19 +3,12 @@ body {
 }
 
 nav.glass {
-  background-color: #000000a1 !important;
+  background: rgba(0, 0, 0, 0.63) !important;
 }
 
 .bonus {
   color: #f6a821;
 }
-
-
-
-/*body {*/
-/*background: #111;*/
-/*font-family: "Open Sans", Impact;*/
-/*}*/
 
 .area {
   text-align: center;

@@ -38,6 +38,10 @@ export const adminRoutes: Routes = [
       }
     ],
   },
+  {
+    path: '**',
+    redirectTo: '/admin'
+  }
 ];
 
 @NgModule({
