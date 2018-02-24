@@ -21,7 +21,7 @@ import {MainModule} from './main/main.module';
     AppRoutingModule,
     AdminModule,
     MainModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([], {useHash: true}),
     LocalStorageModule.withConfig({
       prefix: '',
       storageType: 'localStorage'
