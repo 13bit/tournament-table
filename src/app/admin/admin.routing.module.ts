@@ -37,10 +37,6 @@ export const adminRoutes: Routes = [
         component: SettingsComponent
       }
     ],
-  },
-  {
-    path: '**',
-    redirectTo: '/admin'
   }
 ];
 
