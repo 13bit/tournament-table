@@ -12,12 +12,20 @@ export class AppComponent {
   constructor() {
     const menu = remote.Menu.buildFromTemplate([{
       label: 'File',
-      submenu: [{
-        label: 'Открыть таблицу',
-        click: () => {
-          ipcRenderer.send('openTournamentTable');
+      submenu: [
+        {
+          label: 'Открыть таблицу',
+          click: () => {
+            ipcRenderer.send('openTournamentTable');
+          }
+        },
+        {
+          label: 'Закрыть',
+          click: () => {
+            ipcRenderer.send('quit');
+          }
         }
-      }]
+      ]
     }]);
     remote.Menu.setApplicationMenu(menu);
   }

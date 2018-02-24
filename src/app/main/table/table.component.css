@@ -5,18 +5,18 @@ thead:first-child {
 
 tbody tr:nth-child(1) {
   /*background-color: #eab12b;*/
-  background-color: #eab12be8;
+  background: rgba(234, 177, 43, 0.909);
   /*opacity: 0.9;*/
 }
 
 tbody tr:nth-child(2) {
   /*background-color: #bbb7b7;*/
-  background-color:#eab12bb8;
+  background:rgba(234, 177, 43, 0.721);
   /*opacity: 0.9;*/
 }
 
 tbody tr:nth-child(3) {
-  background-color: #eab12b66;
+  background: rgba(234, 177, 43, 0.4);
   /*opacity: 0.9;*/
 }
 

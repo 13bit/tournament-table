@@ -12,7 +12,7 @@ function createWindow() {
     }
   })
 
-  const wintwo = new BrowserWindow({
+  let wintwo = new BrowserWindow({
     width: 800,
     height: 600,
     show: false,
@@ -20,7 +20,6 @@ function createWindow() {
 
   wintwo.loadURL(`file:///${__dirname}/dist/index.html#/main`);
   // wintwo.loadURL('http://localhost:4200/main');
-  wintwo.webContents.openDevTools()
 
   // win.loadURL('http://localhost:4200');
 
@@ -28,16 +27,25 @@ function createWindow() {
 
 
   //// uncomment below to open the DevTools.
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
+  // wintwo.webContents.openDevTools()
+
 
   // Event when the window is closed.
   win.on('closed', function () {
-    win = null
+    win = null;
+    wintwo = null;
   })
 
   ipcMain.on('openTournamentTable', () => {
+    // wintwo.maximize();
+    wintwo.setFullScreen(true);
     wintwo.show();
   })
+
+  ipcMain.on('quit', () => {
+    app.quit();
+  });
 
   wintwo.on('close', function (event) {
     wintwo.hide();

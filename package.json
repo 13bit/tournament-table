@@ -14,7 +14,9 @@
     "electron-build": "npm run build --prod && electron .",
     "build": "webpack",
     "start": "webpack-dev-server --port=4200",
-    "pree2e": "webdriver-manager update --standalone false --gecko false --quiet"
+    "pree2e": "webdriver-manager update --standalone false --gecko false --quiet",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds",
+    "package-win": "electron-packager . tournament-table --overwrite --asar --platform=win32 --arch=x64 --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Tournament Table\""
   },
   "private": true,
   "dependencies": {
@@ -53,6 +55,7 @@
     "copy-webpack-plugin": "~4.4.1",
     "cssnano": "^3.10.0",
     "electron": "^1.8.2",
+    "electron-packager": "^11.0.1",
     "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.29.0",
     "istanbul-instrumenter-loader": "^3.0.0",
