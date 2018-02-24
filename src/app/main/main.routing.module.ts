@@ -4,7 +4,7 @@ import {MainComponent} from './main.component';
 
 export const mainRoutes: Routes = [
   {
-    path: '',
+    path: 'main',
     canActivate: [],
     component: MainComponent,
     children: [],

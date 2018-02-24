@@ -4,11 +4,11 @@ import {adminRoutes} from './admin/admin.routing.module';
 import {mainRoutes} from './main/main.routing.module';
 
 export const appRoutes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'app',
-  //   pathMatch: 'full'
-  // },
+  {
+    path: '',
+    redirectTo: 'admin',
+    pathMatch: 'full'
+  },
   {
     path: '',
     canActivate: [],

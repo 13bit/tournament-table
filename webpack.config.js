@@ -116,9 +116,6 @@ const postcssPlugins = function (loader) {
         ];
     };
 
-
-
-
 module.exports = {
   "target": "electron-renderer",
   "resolve": {
