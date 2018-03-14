@@ -1,10 +1,10 @@
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 glass">
   <div class="navbar col-sm-3 col-md-3">
-    <img src="assets/joker.png" width="200" height="200" style="margin: 0.5em 0.5em 0.5em 3em;">
+    <img src="assets/joker.png" width="250" height="250" style="margin: 0.5em 0.5em 0.5em 3em;">
   </div>
   <div class="col-sm-6 col-md-3">
-    <div class="flux">BONUS</div>
-    <div class="neon">{{settings.bonus}}</div>
+    <div class="flux" >BONUS</div>
+    <div class="neon" [style.margin-left]="calcBonusMarginLeft()">{{settings.bonus}}</div>
   </div>
 
   <div class="col-sm-3 col-md-3">

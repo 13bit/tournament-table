@@ -1,3 +1,7 @@
+table.tournament {
+  font-size: 2.5em;
+}
+
 thead:first-child {
   /*color: #4c3535;*/
   background: #374858;
@@ -5,21 +9,34 @@ thead:first-child {
 
 tbody tr:nth-child(1) {
   /*background-color: #eab12b;*/
-  background: rgba(234, 177, 43, 0.909);
+  /*background: rgba(234, 177, 43, 0.909);*/
   /*opacity: 0.9;*/
+
+  background: rgba(234, 177, 43, 1);
+  color: #c50f22;
+  font-weight: bold;
 }
 
 tbody tr:nth-child(2) {
   /*background-color: #bbb7b7;*/
-  background:rgba(234, 177, 43, 0.721);
+  /*background: rgba(234, 177, 43, 0.721);*/
   /*opacity: 0.9;*/
+
+  background: rgba(234, 177, 43, 1);
+  color: #c50f22;
+  font-weight: bold;
 }
 
 tbody tr:nth-child(3) {
-  background: rgba(234, 177, 43, 0.4);
+  /*background: rgba(234, 177, 43, 0.4);*/
   /*opacity: 0.9;*/
+
+  background: rgba(234, 177, 43, 1);
+  color: #c50f22;
+  font-weight: bold;
 }
 
 .user-name:first-letter {
   text-transform: uppercase;
 }
+

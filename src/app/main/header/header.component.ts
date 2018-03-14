@@ -38,6 +38,18 @@ export class HeaderComponent implements OnInit {
       });
   }
 
+  calcBonusMarginLeft(): string {
+    let marginLeft = '0';
+
+    if (this.settings.bonus.toString().length >= 5) {
+      marginLeft = '-7vw';
+    } else if (this.settings.bonus.toString().length === 4) {
+      marginLeft = '-3.5vw';
+    }
+
+    return marginLeft;
+  }
+
   ticTac(): void {
     const endTime = moment(this.settings.endDate);
     const diff = moment().diff(endTime);
