@@ -13,6 +13,8 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementsByTagName('body')[0].style.background = "#2B3E50";
+
     this.router.navigateByUrl('/admin/users');
   }
 

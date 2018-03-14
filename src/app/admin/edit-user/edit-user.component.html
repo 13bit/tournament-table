@@ -45,7 +45,7 @@
            class="form-control"
            id="bonus"
            name="bonus"
-           [(ngModel)]="bonus"
+           [(ngModel)]="bonus.value"
            placeholder="Введите бонус">
     <div class="input-group-append">
       <button class="btn btn-success" type="button" (click)="addBonus()">Добавить</button>
@@ -53,7 +53,7 @@
     </div>
   </div>
 
-  <div class="col-md-6" style="padding-left: 0;" *ngIf="user.bonusHistory.length">
+  <div class="col-md-12" style="padding-left: 0;" *ngIf="user.bonusHistory.length">
     <label for="">История бонусов</label>
 
     <div class="scrollit" style="margin-bottom: 1em">
@@ -63,8 +63,11 @@
             style="border: 1px solid #df691ab5; padding-bottom: 5px; padding-top: 5px;">
 
           <div class="row">
-            <div class="col-md-8">
-              {{bonus}}
+            <div class="col-md-4">
+              {{bonus.value}}
+            </div>
+            <div class="col-md-4">
+              {{bonus.createdAt | date: 'yyyy-MM-dd HH:mm'}}
             </div>
             <div class="col-md-4">
               <button class="btn btn-sm btn-success" (click)="removeHistoryItem(index)">Удалить</button>

@@ -9,28 +9,42 @@ import {User} from '../../models/User';
 })
 export class TableComponent implements OnInit {
   users: User[];
+  scrollHeightMax: number;
+  scrollHeightCurrent: number = 0;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit() {
     this.getUsers();
     setInterval(() => this.getUsers(), 15000);
+    setInterval(() => this.scroll(), 40 * 1000);
   }
 
   getUsers() {
     this.userService.get()
       .subscribe((users) => {
         this.users = users.sort((a, b) => b.bonus - a.bonus);
+        this.scrollHeightMax = (users.length + 1) * 67;
       });
   }
 
   scroll() {
-    setInterval(() => {
+    const step = 465;
+
+    if (this.scrollHeightCurrent >= this.scrollHeightMax) {
+      this.scrollHeightCurrent = step;
       window.scrollBy({
-        top: 25,
+        top: -this.scrollHeightMax,
         behavior: 'smooth'
       });
-    }, 1000);
+    } else {
+      this.scrollHeightCurrent += step;
+      window.scrollBy({
+        top: step,
+        behavior: 'smooth'
+      });
+    }
 
   }
 }

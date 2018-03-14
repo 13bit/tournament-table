@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/User';
 import {UserService} from '../../UserService';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Bonus} from '../../models/Bonus';
 
 @Component({
   selector: 'app-edit-user',
@@ -9,12 +10,13 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
-  user: User|any;
+  user: User | any;
   showAddBonusForm = false;
-  bonus: number = null;
+  bonus: Bonus = null;
   bonusSum: number;
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {
+  }
 
   ngOnInit() {
     this.user = this.route.snapshot.data['user']
@@ -25,7 +27,7 @@ export class EditUserComponent implements OnInit {
   }
 
   save(): void {
-     this.userService.save(this.user)
+    this.userService.save(this.user)
       .subscribe((user) => {
         console.log('user  >>', user);
         this.router.navigateByUrl('/admin/users');
@@ -34,12 +36,14 @@ export class EditUserComponent implements OnInit {
 
   showAddBonusInput(): void {
     this.showAddBonusForm = true;
+    this.bonus = new Bonus();
   }
 
   addBonus(): void {
-    this.bonus = this.bonus * 1;
+    this.bonus.value = this.bonus.value * 1;
+    this.bonus.createdAt = Date.now();
 
-    if (this.bonus > 0 && Number.isInteger(this.bonus)) {
+    if (this.bonus.value > 0 && Number.isInteger(this.bonus.value)) {
       this.user.bonusHistory.push(this.bonus);
       this.bonus = null;
       this.showAddBonusForm = false;
@@ -54,7 +58,7 @@ export class EditUserComponent implements OnInit {
   }
 
   calculateBonus(): number {
-    return this.user.bonusHistory.reduce((acc, bonus) => acc + bonus, 0);
+    return this.user.bonusHistory.reduce((acc, bonus) => acc + bonus.value, 0);
   }
 
   removeHistoryItem(index): void {
