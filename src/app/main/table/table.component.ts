@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../UserService';
 import {User} from '../../models/User';
 
@@ -31,19 +31,16 @@ export class TableComponent implements OnInit {
 
   scroll() {
     const step = 465;
-
     if (this.scrollHeightCurrent >= this.scrollHeightMax) {
       this.scrollHeightCurrent = step;
-      window.scrollBy({
-        top: -this.scrollHeightMax,
-        behavior: 'smooth'
-      });
+      //TODO @@@dr when chrome in electron 65+ can use window.scrollBy({
+      //TODO @@@dr   top: -this.scrollHeightMax,
+      //TODO @@@dr     behavior: 'smooth'
+      // TODO @@@dr });
+      window.scrollBy(0, -this.scrollHeightMax);
     } else {
       this.scrollHeightCurrent += step;
-      window.scrollBy({
-        top: step,
-        behavior: 'smooth'
-      });
+      window.scrollBy(0, step);
     }
 
   }

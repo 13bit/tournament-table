@@ -1,5 +1,6 @@
-var { app, BrowserWindow, ipcMain } = require('electron');
+var {app, BrowserWindow, ipcMain} = require('electron');
 let win;
+let wintwo;
 
 function createWindow() {
   // Create the browser window.
@@ -12,23 +13,21 @@ function createWindow() {
     }
   })
 
-  let wintwo = new BrowserWindow({
+  wintwo = new BrowserWindow({
     width: 800,
     height: 600,
     show: false,
   });
 
-  wintwo.loadURL(`file:///${__dirname}/dist/index.html#/main`);
-  // wintwo.loadURL('http://localhost:4200/main');
-
+  /* Dev Mode */
   // win.loadURL('http://localhost:4200');
-
-    win.loadURL(`file:///${__dirname}/dist/index.html`);
-
-
-  //// uncomment below to open the DevTools.
+  // wintwo.loadURL('http://localhost:4200/#/main');
   // win.webContents.openDevTools()
   // wintwo.webContents.openDevTools()
+
+  /* PROD Mode */
+  win.loadURL(`file:///${__dirname}/dist/index.html`);
+  wintwo.loadURL(`file:///${__dirname}/dist/index.html#/main`);
 
 
   // Event when the window is closed.
@@ -40,6 +39,7 @@ function createWindow() {
   ipcMain.on('openTournamentTable', () => {
     // wintwo.maximize();
     wintwo.setFullScreen(true);
+    wintwo.setAutoHideMenuBar(true);
     wintwo.show();
   })
 
@@ -48,8 +48,7 @@ function createWindow() {
   });
 
   wintwo.on('close', function (event) {
-    wintwo.hide();
-    event.preventDefault();
+    wintwo = null;
   })
 }
 
@@ -67,7 +66,7 @@ app.on('window-all-closed', function () {
 
 app.on('activate', function () {
   // macOS specific close process
-  if (win === null) {
+  if (win === null || wintwo == null) {
     createWindow()
   }
 })
