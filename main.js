@@ -32,15 +32,22 @@ function createWindow() {
 
   // Event when the window is closed.
   win.on('closed', function () {
-    win = null;
-    wintwo = null;
+    app.quit();
+
   })
 
+  let tableFullScree = false;
+
   ipcMain.on('openTournamentTable', () => {
-    // wintwo.maximize();
-    wintwo.setFullScreen(true);
-    wintwo.setAutoHideMenuBar(true);
+    wintwo.setFullScreen(false);
+    wintwo.setAutoHideMenuBar(false);
     wintwo.show();
+  })
+
+  ipcMain.on('tournamentTableFullScreen', () => {
+    tableFullScree = !tableFullScree;
+    wintwo.setFullScreen(tableFullScree);
+    wintwo.setAutoHideMenuBar(tableFullScree);
   })
 
   ipcMain.on('quit', () => {
